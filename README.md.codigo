@@ -1,0 +1,350 @@
+
+# Importando os dados alunos baseado regra do negócio
+import pandas as pd
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Configuração para mostrar todas as colunas e linhas ao visualizar o DataFrame
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+# Visualize todos os dados do DataFrame
+alunos
+# tratamento do dados alunos
+import pandas as pd
+
+# Supondo que 'df' é o nome do seu DataFrame
+data = {'id': [0, 1, 2, 3, 4,],
+        'coluna1': ['Agatha Barbosa', 'Nathan Pinto', 'Renan Aragão', 'Kevin Rezende', 'Bruna Barros'],
+        'coluna2': ['1961-01-07', '1998-01-08', '1979-01-05', '1978-10-21', '1966-11-05']}
+df = pd.DataFrame(data)
+
+# Definir a coluna 'id' como índice
+df.set_index('id', inplace=True)
+
+# Exibir o DataFrame com 'id' no lado esquerdo
+print(df)
+Esse exemplo  de resultado primeiras linha tabela fica so com um  numero id
+# importar dados principais baseado regra de negócio 
+import pandas as pd
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/matricula_notas.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Configuração para mostrar todas as colunas e linhas ao visualizar o DataFrame
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+# Visualize todos os dados do DataFrame
+ alunos
+# tratamento de limpeza dados Notas.csv
+import pandas as pd
+
+# Substitua 'URL_DO_ARQUIVO_CSV' pelo link raw do arquivo CSV no GitHub
+url = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/matricula_notas.csv'
+
+# Carregue os dados diretamente do GitHub
+df = pd.read_csv(url)
+
+# Agora você pode prosseguir com as manipulações do DataFrame
+# Substitua os valores NaN na coluna 'nota' por 0
+df['nota'] = df['nota'].fillna(0)
+
+# Exiba o DataFrame após a substituição dos valores NaN
+print(df)
+# importando dados turma.csv 
+import pandas as pd
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos =' https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/turmas.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Configuração para mostrar todas as colunas e linhas ao visualizar o DataFrame
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+# Visualize todos os dados do DataFrame
+alunos
+# transformação dos dados com as variáveis:
+import pandas as pd
+from datetime import datetime
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Escolha um índice de aluno específico
+indice_aluno = 0  # Substitua pelo índice do aluno desejado
+
+# Converta a coluna 'data_nascimento' para o formato de data
+alunos['data_nascimento'] = pd.to_datetime(alunos['data_nascimento'], errors='coerce')
+
+# Obtenha a data de nascimento do aluno específico
+data_nascimento_aluno = alunos.loc[indice_aluno, 'data_nascimento']
+
+# Calcular a idade com base na data de nascimento
+data_atual = datetime.now()
+idade_aluno = (data_atual - data_nascimento_aluno).days // 365  # Calcula a idade em anos
+
+# Visualize a idade do aluno
+idade_aluno
+
+import pandas as pd
+from datetime import datetime
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Converta a coluna 'data_nascimento' para o formato de data
+alunos['data_nascimento'] = pd.to_datetime(alunos['data_nascimento'], errors='coerce')
+
+# Calcular a idade para todos os alunos no intervalo de índices de 0 a 4
+data_atual = datetime.now()
+alunos['idade'] = (data_atual - alunos['data_nascimento']).dt.days // 365  # Calcula a idade em anos
+
+# Visualize os dados do DataFrame com a nova coluna 'idade'
+alunos[['id', 'nome', 'data_nascimento', 'idade']]
+# explicaçao dessa variável para descobrir idade se quiser cada aluno específico utilizando Neste código, 
+estamos utilizando a propriedade .days na diferença entre as datas para obter o número de dias e, em seguida, dividindo por 365 para
+obter a idade em anos
+# variável nota aprovada
+import pandas as pd
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_notas = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/matricula_notas.csv'
+
+# Importe o arquivo CSV de notas
+notas = pd.read_csv(url_notas)
+
+# Filtrar notas para obter apenas as notas de aprovação (>= 7.0)
+notas_aprovadas = notas[notas['nota'] >= 7.0]
+
+# Visualize as notas aprovadas
+notas_aprovadas.head()
+  
+explicação: usei variável notas aprovação para Em resumo,
+    o uso de variáveis descritivas melhora a clareza, a legibilidade e a manutenção do código,
+    e facilita a reutilização e análise de conjuntos de dados específicos.
+#variável para filtrar que dia da  semana baseado dados turmas 
+import pandas as pd
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_turmas = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/turmas.csv'
+
+# Importe o arquivo CSV de turmas
+turmas = pd.read_csv(url_turmas)
+
+# Converta as colunas de data para o formato de data
+turmas['data_inicio'] = pd.to_datetime(turmas['data_inicio'])
+turmas['data_termino'] = pd.to_datetime(turmas['data_termino'])
+
+# Crie uma nova coluna 'dia_semana_inicio' com o dia da semana em português para a data de início
+turmas['dia_semana_inicio'] = turmas['data_inicio'].dt.strftime('%A').replace({
+    'Monday': 'Segunda-feira',
+    'Tuesday': 'Terça-feira',
+    'Wednesday': 'Quarta-feira',
+    'Thursday': 'Quinta-feira',
+    'Friday': 'Sexta-feira',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+})
+
+# Crie uma nova coluna 'dia_semana_termino' com o dia da semana em português para a data de término
+turmas['dia_semana_termino'] = turmas['data_termino'].dt.strftime('%A').replace({
+    'Monday': 'Segunda-feira',
+    'Tuesday': 'Terça-feira',
+    'Wednesday': 'Quarta-feira',
+    'Thursday': 'Quinta-feira',
+    'Friday': 'Sexta-feira',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+})
+
+# Visualize os dados do DataFrame resultante
+turmas.head()
+Explicação:Ao utilizar a função dt.strftime('%A') nas colunas de data,
+    você obtém o nome do dia da semana em inglês. Para tornar a informação mais amigável, 
+    substituímos esses nomes pelos equivalentes em português usando o método replace. essa variável filtrar dia da semana
+    Isso pode ser útil em situações em que você deseja analisar dados com base nos dias da semana, como programação de aulas 
+    análise de desempenho em diferentes dias .
+
+#  Modelos de Machine Learning classificação
+import pandas as pd
+import numpy as np
+from datetime import datetime
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+
+# Importe o arquivo CSV
+alunos = pd.read_csv(url_alunos)
+
+# Converta a coluna 'data_nascimento' para o formato de data
+alunos['data_nascimento'] = pd.to_datetime(alunos['data_nascimento'], errors='coerce')
+
+# Calcular a idade para todos os alunos
+data_atual = datetime.now()
+alunos['idade'] = (data_atual - alunos['data_nascimento']).dt.days // 365  # Calcula a idade em anos
+
+# Gere notas aleatórias para todos os alunos (substitua por suas reais, se disponíveis)
+np.random.seed(42)
+alunos['nota_final'] = np.random.uniform(5.0, 10.0, size=len(alunos))
+
+# Suponha que 'aprovado' seja determinado com base em uma nota de corte, por exemplo, nota_final > 7
+alunos['aprovado'] = alunos['nota_final'] > 7
+
+# Selecione as features (nesse caso, estamos usando apenas a idade para simplificar)
+X = alunos[['idade']]
+
+# Variável alvo
+y = alunos['aprovado']
+
+# Divida os dados em conjuntos de treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Crie e treine um modelo de classificação (árvore de decisão)
+modelo_classificacao = DecisionTreeClassifier()
+modelo_classificacao.fit(X_train, y_train)
+
+# Faça previsões
+y_pred_classificacao = modelo_classificacao.predict(X_test)
+
+# Avalie o desempenho do modelo
+accuracy = accuracy_score(y_test, y_pred_classificacao)
+conf_matrix = confusion_matrix(y_test, y_pred_classificacao)
+class_report = classification_report(y_test, y_pred_classificacao)
+
+# Visualize o desempenho do modelo
+print(f'Accuracy: {accuracy}')
+print('Confusion Matrix:')
+print(conf_matrix)
+print('Classification Report:')
+print(class_report)
+
+ # modelo regressão
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_squared_error
+import requests
+from io import StringIO
+
+# Links para os dados no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+url_notas = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/matricula_notas.csv'
+
+# Função para carregar dados de um link CSV
+def load_data(url):
+    response = requests.get(url)
+    data = pd.read_csv(StringIO(response.text))
+    return data
+
+# Carregar dados dos links
+data_alunos = load_data(url_alunos)
+data_notas = load_data(url_notas)
+
+# Engenharia de Recursos
+
+# Exemplo: Tratando diferentes formatos de data
+data_alunos['data_nascimento'] = pd.to_datetime(data_alunos['data_nascimento'], errors='coerce')
+
+# Removendo linhas com datas inválidas
+data_alunos = data_alunos.dropna(subset=['data_nascimento'])
+
+# Calculando a idade em anos
+data_alunos['idade'] = ((pd.to_datetime('today') - data_alunos['data_nascimento']).dt.days // 365).astype(int)
+
+# Mescle os dados usando 'id' no DataFrame alunos e 'id_matricula' no DataFrame notas
+merged_data = pd.merge(data_alunos, data_notas, left_on='id', right_on='id_matricula', how='inner')
+
+# 3. Divisão dos Dados
+X = merged_data[['idade', 'nota']]  # Substitua pelos nomes reais das suas características
+
+# Calcular o total de inscritos
+merged_data['total_inscritos'] = merged_data.groupby('id')['id_matricula'].transform('count')
+
+# Agora, você pode acessar a coluna 'total_inscritos'
+y = merged_data['total_inscritos']
+
+# Lidar com valores ausentes em X
+imputer = SimpleImputer(strategy='mean')  # Use a média para preencher os valores ausentes
+X = imputer.fit_transform(X)
+
+# 4. Divisão em conjuntos de treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# # 5. Treinamento do modelo
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 6. Previsões
+y_pred = model.predict(X_test)
+
+# 7. Avaliação do modelo
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# visualização dos dados:
+
+import pandas as pd
+from datetime import datetime
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Substitua o link pelo URL real do arquivo CSV no GitHub
+url_alunos = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/alunos.csv'
+url_notas = 'https://raw.githubusercontent.com/willianmaria/00006-2024-data/main/matricula_notas.csv'
+
+# Importe o arquivo CSV dos alunos
+alunos = pd.read_csv(url_alunos)
+
+# Converta a coluna 'data_nascimento' para o formato de data
+alunos['data_nascimento'] = pd.to_datetime(alunos['data_nascimento'], errors='coerce')
+
+# Calcular a idade para todos os alunos
+data_atual = pd.to_datetime('now')
+alunos['idade'] = (data_atual - alunos['data_nascimento']).dt.days // 365
+
+# Importe o arquivo CSV das notas
+notas = pd.read_csv(url_notas)
+
+# Substitua os valores NaN na coluna 'nota' por 0
+notas['nota'] = notas['nota'].fillna(0)
+
+# Merge dos DataFrames 'alunos' e 'notas' usando 'id'
+dados_combinados = pd.merge(notas, alunos, left_on='id_matricula', right_on='id', how='inner')
+
+# Verifique as informações da coluna 'id_disciplina'
+if 'id_disciplina' in dados_combinados.columns:
+    print(dados_combinados['id_disciplina'].value_counts())
+else:
+    print("A coluna 'id_disciplina' não está presente no DataFrame.")
+
+# Converta a coluna 'id_disciplina' para o tipo categórico
+dados_combinados['id_disciplina'] = dados_combinados['id_disciplina'].astype('category')
+
+# Gráfico de Dispersão: Idade vs. Nota
+plt.figure(figsize=(12, 8))
+sns.scatterplot(x='idade', y='nota', data=dados_combinados, hue='id_disciplina')
+plt.title('Relação entre Idade dos Alunos e Notas por Disciplina')
+plt.xlabel('Idade dos Alunos')
+plt.ylabel('Nota')
+plt.show()
